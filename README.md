@@ -3,7 +3,7 @@ ArimaX Time Series with R
 
 Need Packages List
 
-library(data.table)
+library(data.table)\
 library(plyr)
 library(dplyr)
 library(ggplot2)
