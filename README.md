@@ -1,7 +1,7 @@
 # ArimaX
 ArimaX Time Series with R
 
-Need Packages List
+Required Packages List
 
 library(data.table)\
 library(plyr)\
