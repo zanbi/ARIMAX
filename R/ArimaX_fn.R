@@ -202,7 +202,7 @@ Arimax_wh_fn <- function(Index = arimax_df$ARIMAX_YM[1:141], newIndex = arimax_d
   result = list(value = tmp,
                 order = sample_df %>% dplyr::select(NO, p,d,q,P,D,Q,PERIOD) %>% unique %>% mutate(MDL_TOP = 1:n()))
 
-return(result)
+return(result )
 }
 
 
