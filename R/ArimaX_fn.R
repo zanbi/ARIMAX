@@ -179,9 +179,6 @@ Arimax_wh_fn <- function(Index = arimax_df$ARIMAX_YM[1:141], newIndex = arimax_d
   } else if (error_type == "Last6M") { result_df <- result_df %>% arrange(Last6M_no)
   } else if (error_type == "Last12M") {result_df <- result_df %>% arrange(Last12M_no)}
 
-  result_df <- result_df %>% arrange(Last6M_no)
-  result_df <- result_df %>% arrange(Last12M_no)
-
   max_pt <- 20
   # 최종 선택 가중치
   sample_df  <- result_df %>% filter(NO %in% result_df$NO[1:max_pt])
@@ -202,7 +199,10 @@ Arimax_wh_fn <- function(Index = arimax_df$ARIMAX_YM[1:141], newIndex = arimax_d
   } else if (error_type == "Last12M") {  names(resulttop_df) <- paste0("Last12M_", names(resulttop_df))}
 
   tmp <- data.frame(ARIMAX_YM = newIndex , no = 1:predict_length, real = testdata, resulttop_df)
-  tmp
+  result = list(value = tmp,
+                order = sample_df %>% dplyr::select(NO, p,d,q,P,D,Q,PERIOD) %>% unique %>% mutate(MDL_TOP = 1:n()))
+
+return(result)
 }
 
 
